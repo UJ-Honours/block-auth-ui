@@ -1,16 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+//import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavBarComponent } from './mega-menu/nav-bar/nav-bar.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { DevicesComponent } from './devices/devices.component';
+import { UsersComponent } from './users/users.component';
+import { TokensComponent } from './tokens/tokens.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavBarComponent,
+    NavigationComponent,
+    HomeComponent,
+    LoginComponent,
+    DevicesComponent,
+    UsersComponent,
+    TokensComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
