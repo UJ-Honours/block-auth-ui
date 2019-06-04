@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'block-auth-ui';
+  //title = 'block-auth-ui-1';
 }
