@@ -23,32 +23,19 @@
         </h5>
         <h5 class="card-title mb-1">
           <strong>
-            <a href="" class="dark-grey-text">Ether Account Balance: {{amount}}</a>
+            <a href="" class="dark-grey-text">Ether Account Balance: {{balance}}</a>
           </strong>
         </h5>
-        <!--<span class="badge badge-danger mb-2">bestseller</span>-->
-        <!-- Rating -->
-        <!--<ul class="rating">
-    <li>
-      <i class="fas fa-star blue-text"></i>
-    </li>
-    <li>
-      <i class="fas fa-star blue-text"></i>
-    </li>
-    <li>
-      <i class="fas fa-star blue-text"></i>
-    </li>
-    <li>
-      <i class="fas fa-star blue-text"></i>
-    </li>
-    <li>
-      <i class="fas fa-star blue-text"></i>
-    </li>
-  </ul>-->
+        
         <!-- Card footer -->
         <div class="card-footer pb-0">
-          <div class="row mb-0">
-            <button (click)="goBuy()">Deactivate</button>
+          <div class="form-group">
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-success">Activate</button>
+            </div>
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
+            </div>
           </div>
 
         </div>

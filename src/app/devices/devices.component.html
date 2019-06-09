@@ -2,8 +2,10 @@
 
 </div>
 <div class="row">
-  <button>Add Device</button>
-  <button>Add User</button>
+  <div class="form-group">
+    <button class="btn btn-primary">Add Device</button>
+    <button class="btn btn-primary">Add User</button>
+  </div>
 </div>
 <div class="container mt-5 pt-3">
 
@@ -22,7 +24,7 @@
       <div class="view overlay">
 
         <img src="assets/img/lights.jpg" class="img-fluid"
-             alt="">
+             alt="" height="170" width="170">
 
         <a>
 
@@ -44,28 +46,15 @@
         </h5>
         <span class="badge badge-danger mb-2"></span>
 
-        <!-- Rating -->
-        <!--<ul class="rating">
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-  </ul>-->
         <!-- Card footer -->
         <div class="card-footer pb-0">
-          <div class="row mb-0">
-            <button (click)="goBuy()" class="primary">Connect</button>
-          </div>
-          <hr />
-          <div class="row mb-0">
-            <button (click)="goAccount()">Disconnect</button>
+          <div class="form-group">
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-success">Activate</button>
+            </div>
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +77,6 @@
 
         <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid"
              alt="">
-
         <a>
 
           <div class="mask rgba-white-slight"></div>
@@ -99,37 +87,25 @@
       <!-- Card image -->
       <!-- Card content -->
       <div class="card-body">
-        zz
+        
 
         <!-- Category & Title -->
-        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">iPhone</a></strong></h5><span class="badge badge-info mb-2"></span>
+        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Phone</a></strong></h5><span class="badge badge-info mb-2"></span>
         <h5 class="card-title mb-1">
           <strong>
             <a href="" class="dark-grey-text">Status: {{amount}}</a>
           </strong>
         </h5>
-        <!-- Rating -->
-        <!--<ul class="rating">
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-  </ul>-->
+        
         <!-- Card footer -->
         <div class="card-footer pb-0">
-          <div class="row mb-0">
-            <button (click)="goBuy()" class="primary">Connect</button>
-          </div>
-          <hr />
-          <div class="row mb-0">
-            <button (click)="goAccount()">Disconnect</button>
+          <div class="form-group">
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-success">Activate</button>
+            </div>
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
+            </div>
           </div>
         </div>
 
@@ -171,28 +147,16 @@
             <a href="" class="dark-grey-text">Status: {{amount}}</a>
           </strong>
         </h5>
-        <!-- Rating -->
-        <!--<ul class="rating">
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star blue-text"></i></li>
-
-    <li><i class="fas fa-star grey-text"></i></li>
-
-  </ul>-->
+        
         <!-- Card footer -->
         <div class="card-footer pb-0">
-          <div class="row mb-0">
-            <button (click)="goBuy()" class="primary">Connect</button>
-          </div>
-          <hr />
-          <div class="row mb-0">
-            <button (click)="goAccount()">Disconnect</button>
+          <div class="form-group">
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-success">Activate</button>
+            </div>
+            <div class="row mb-0">
+              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
+            </div>
           </div>
         </div>
 
