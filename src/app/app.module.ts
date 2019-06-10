@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-//import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { LoginComponent } from './login/login.component';
 import { DevicesComponent } from './devices/devices.component';
 import { UsersComponent } from './users/users.component';
 import { TokensComponent } from './tokens/tokens.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { TokensComponent } from './tokens/tokens.component';
     LoginComponent,
     DevicesComponent,
     UsersComponent,
-    TokensComponent
+    TokensComponent,
+    PageNotFoundComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
