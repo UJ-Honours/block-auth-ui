@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from '../services/modal.service';
+import Web3 from 'web3';
 
 @Component({
   selector: 'app-devices',
@@ -7,20 +7,20 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./devices.component.css']
 })
 export class DevicesComponent implements OnInit {
-  amount: string = "active";
+  amount = 'active';
   bodyText: string;
-  constructor(private modalService: ModalService) { }
+  constructor() { }
 
   ngOnInit() {
     this.bodyText = 'This text can be updated in modal 1';
   }
-
-  openModal(id: string) {
-    this.modalService.open(id);
+  async loadBlockchainData() {
+    const web3 = new Web3(Web3.givenProvider || 'ws://localhost:7545');
+    const accounts = await web3.eth.getAccounts();
+    console.log(accounts[0]);
   }
+  login() {
 
-  closeModal(id: string) {
-    this.modalService.close(id);
   }
 
 }

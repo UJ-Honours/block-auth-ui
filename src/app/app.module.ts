@@ -13,7 +13,6 @@ import { DevicesComponent } from './devices/devices.component';
 import { UsersComponent } from './users/users.component';
 import { TokensComponent } from './tokens/tokens.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +24,7 @@ import { ModalComponent } from './modal/modal.component';
     DevicesComponent,
     UsersComponent,
     TokensComponent,
-    PageNotFoundComponent,
-    ModalComponent
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
