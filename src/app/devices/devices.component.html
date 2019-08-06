@@ -42,7 +42,7 @@
         <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Lights</a></strong></h5>
         <h5 class="card-title mb-1">
           <strong>
-            <a href="" class="dark-grey-text">Status: {{amount}}</a>
+            <a href="" class="dark-grey-text">Status: {{status}}</a>
           </strong>
         </h5>
         <span class="badge badge-danger mb-2"></span>
@@ -50,11 +50,12 @@
         <!-- Card footer -->
         <div class="card-footer pb-0">
           <div class="form-group">
+            
             <div class="row mb-0">
-              <button (click)="login()" class="btn btn-success">Activate</button>
+              <button (click)="connect()" class="btn btn-success">Connect</button>
             </div>
             <div class="row mb-0">
-              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
+              <button (click)="disconnect()" class="btn btn-danger">Disconnect</button>
             </div>
           </div>
         </div>
@@ -67,105 +68,7 @@
 
   </div>
   <!-- Grid column -->
-  <!-- Grid column -->
-  <div class="col-lg-3 col-md-6 mb-4">
-
-    <!-- Card -->
-    <div class="card card-ecommerce">
-
-      <!-- Card image -->
-      <div class="view overlay">
-
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
-        <a>
-
-          <div class="mask rgba-white-slight"></div>
-
-        </a>
-
-      </div>
-      <!-- Card image -->
-      <!-- Card content -->
-      <div class="card-body">
-
-
-        <!-- Category & Title -->
-        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Phone</a></strong></h5><span
-          class="badge badge-info mb-2"></span>
-        <h5 class="card-title mb-1">
-          <strong>
-            <a href="" class="dark-grey-text">Status: {{amount}}</a>
-          </strong>
-        </h5>
-
-        <!-- Card footer -->
-        <div class="card-footer pb-0">
-          <div class="form-group">
-            <div class="row mb-0">
-              <button (click)="goBuy()" class="btn btn-success">Activate</button>
-            </div>
-            <div class="row mb-0">
-              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- Card content -->
-
-    </div>
-    <!-- Card -->
-
-  </div>
-  <!-- Grid column -->
-  <!-- Grid column -->
-  <div class="col-lg-3 col-md-6 mb-4">
-
-    <!-- Card -->
-    <div class="card card-ecommerce">
-
-      <!-- Card image -->
-      <div class="view overlay">
-
-        <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/3.jpg" class="img-fluid" alt="">
-        <a>
-          <div class="mask rgba-white-slight"></div>
-        </a>
-
-      </div>
-      <!-- Card image -->
-      <!-- Card content -->
-      <div class="card-body">
-
-        <!-- Category & Title -->
-        <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Mirror</a></strong></h5><span
-          class="badge badge-danger mb-2"></span>
-        <h5 class="card-title mb-1">
-          <strong>
-            <a href="" class="dark-grey-text">Status: {{amount}}</a>
-          </strong>
-        </h5>
-
-        <!-- Card footer -->
-        <div class="card-footer pb-0">
-          <div class="form-group">
-            <div class="row mb-0">
-              <button (click)="goBuy()" class="btn btn-success">Activate</button>
-            </div>
-            <div class="row mb-0">
-              <button (click)="goBuy()" class="btn btn-danger">Deactivate</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- Card content -->
-
-    </div>
-    <!-- Card -->
-
-  </div>
-  <!-- Grid column -->
+  
 
 </div>
 <!-- Grid row -->
