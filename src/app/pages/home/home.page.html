@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <h1 class="center" >IoT Management System</h1>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <ion-button color="primary" (click)="goToUsers()" *ngIf="isAdmin">Users</ion-button>
+      <ion-button color="primary" (click)="goToDevices()">Devices</ion-button>
+      <ion-button color="primary" (click)="logout()">Logout</ion-button>
+    </div>
+  </div>
+</ion-content>
