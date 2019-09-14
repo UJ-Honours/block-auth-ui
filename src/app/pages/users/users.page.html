@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Users
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="row">
+    <div class="form-group">
+    <ion-button color="primary" (click)="goBack()">Back</ion-button>
+      <ion-button color="primary" (click)="goToAddUser()" *ngIf="isAdmin">Add User</ion-button>
+    </div>
+    
+  </div>
+  <!-- Grid row -->
+  <ion-list *ngFor="let u of users">
+    <ion-item>
+      <ion-label>{{u.username}}</ion-label>
+      <ion-label>{{u.account}}</ion-label>
+    </ion-item>
+  </ion-list>
+  <!-- Grid row -->
+</ion-content>
