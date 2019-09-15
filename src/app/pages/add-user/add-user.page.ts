@@ -27,11 +27,12 @@ export class AddUserPage implements OnInit {
   ngOnInit() {
     this.addUserForm = this.formBuilder.group({
       username: ['username', Validators.required],
-      password: ['password', Validators.required]
+      password: ['password', Validators.required],
+      role: ['role', Validators.required]
     });
   }
 
-  addUser(form) {
+  addUser(form: { value: { username: any; password: any; role: any; }; }) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -41,9 +42,10 @@ export class AddUserPage implements OnInit {
 
     const username = form.value.username;
     const password = form.value.password;
-
+    const role = form.value.role;
+    console.log('role', role);
     this.loading = true;
-    this.userService.add_user(username, password)
+    this.userService.add_user(username, password, role)
       .pipe(first())
       .subscribe(
         data => {

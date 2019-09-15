@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Devices
+      Device
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,14 +10,13 @@
   <div class="row">
     <div class="form-group">
       <ion-button color="primary" (click)="goBack()">Back</ion-button>
-      <ion-button color="primary" (click)="add_device()" *ngIf="isAdmin">Add Device</ion-button>
     </div>
   </div>
   <!-- Grid row -->
   <div class="row">
 
     <!-- Grid column -->
-    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let d of devices">
+    <div class="col-lg-3 col-md-6 mb-4">
 
       <!-- Card -->
       <div class="card card-ecommerce">
@@ -28,9 +27,7 @@
           <!--<img src="assets/img/lights.jpg" class="img-fluid" alt="" height="170" width="170">
         -->
           <a>
-
             <div class="mask rgba-white-slight"></div>
-
           </a>
 
         </div>
@@ -39,7 +36,7 @@
         <div class="card-body">
 
           <!-- Category & Title -->
-          <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Name: {{d.name}}</a></strong></h5>
+          <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Name: {{device.name}}</a></strong></h5>
           <!----<h5 class="card-title mb-1">
             <strong>
               <a href="" class="dark-grey-text">Account: {{d.account}}</a>
@@ -47,12 +44,12 @@
           </h5>-->
           <h5 class="card-title mb-1">
             <strong>
-              <a href="" class="dark-grey-text">Status: {{d.status}}</a>
+              <a href="" class="dark-grey-text">Status: {{device.status}}</a>
             </strong>
           </h5>
           <h5 class="card-title mb-1">
             <strong>
-              <a href="" class="dark-grey-text">IP Address: {{d.ip}}</a>
+              <a href="" class="dark-grey-text">IP Address: {{device.ip}}</a>
             </strong>
           </h5>
           <span class="badge badge-danger mb-2"></span>
@@ -62,9 +59,9 @@
             <div class="form-group">
 
               <div class="row">
-                <ion-button (click)="connect(d)" color="success">Connect</ion-button>
+                <ion-button (click)="on(device)" color="success">Turn On</ion-button>
               
-                <ion-button (click)="remove(d.ip)" color="danger">Remove</ion-button>
+                <ion-button (click)="off(device)" color="danger">Turn Off</ion-button>
               </div>
             </div>
           </div>

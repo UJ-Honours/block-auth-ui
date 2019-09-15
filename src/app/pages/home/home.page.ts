@@ -26,6 +26,12 @@ export class HomePage {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+  goToOwnerRole() {
+    this.router.navigate(['/role'], { queryParams: { group: 'owner' }});
+  }
+  goToGuestRole() {
+    this.router.navigate(['/role'], { queryParams: { group: 'owner' } });
+  }
   get isAdmin() {
     return this.currentUser && this.currentUser.role === Role.Admin;
   }

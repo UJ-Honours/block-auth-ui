@@ -13,6 +13,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'role',
+    loadChildren: () => import('./pages/role/role.module').then(m => m.RolePageModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'devices',
     loadChildren: () => import('./pages/devices/devices.module').then(m => m.DevicesPageModule),
     canActivate: [AuthGuard]
@@ -22,6 +27,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/add-device/add-device.module').then(m => m.AddDevicePageModule),
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin] }
+  },
+  {
+    path: 'device',
+    loadChildren: () => import('./pages/device/device.module').then(m => m.DevicePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'users',

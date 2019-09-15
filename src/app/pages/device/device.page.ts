@@ -3,38 +3,52 @@ import { first } from 'rxjs/operators';
 import { Device } from '../../../shared/models/device.model';
 import { DeviceService } from '../../../shared/services/device.service';
 import { LoggedIn } from '../../../shared/models/loggedin.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/shared/models/user.model';
 import { AuthenticationService } from 'src/shared/services/authentication.service';
 import { Role } from 'src/shared/models/role';
 
 @Component({
-  selector: 'app-devices',
-  templateUrl: 'devices.page.html',
-  styleUrls: ['devices.page.scss'],
+  selector: 'app-device',
+  templateUrl: 'device.page.html',
+  styleUrls: ['device.page.scss'],
 })
-export class DevicesPage implements OnInit {
+export class DevicePage implements OnInit {
 
-  ipAddress = '';
-  devices: Device[];
+  device: Device;
   currentUser: User;
 
-  constructor(private deviceService: DeviceService, private router: Router, private authService: AuthenticationService
+  constructor(private deviceService: DeviceService, private router: Router,
+              private route: ActivatedRoute, private authService: AuthenticationService
   ) {
     this.authService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit() {
-    this.deviceService.get_devices()
+    this.route.queryParams
+      .subscribe(params => {
+        console.log(params);
+        this.device = new Device(params.name, params.ip, params.status);
+      });
+  }
+
+  on(device: Device) {
+    this.deviceService.device_on(device)
+      .pipe(first())
       .subscribe(data => {
-        console.log('data', data);
-        this.devices = data.devices;
-        // tslint:disable-next-line: only-arrow-functions
-        this.devices.forEach(function(value) {
-          value.status = 'online';
-        });
+        console.log(data);
       }, error => {
-        console.log('error', error);
+        console.log('event_error', error);
+      });
+  }
+
+  off(device: Device) {
+    this.deviceService.device_off(device)
+      .pipe(first())
+      .subscribe(data => {
+        console.log(data);
+      }, error => {
+        console.log('event_error', error);
       });
   }
 
@@ -47,7 +61,6 @@ export class DevicesPage implements OnInit {
       .pipe(first())
       .subscribe(data => {
         console.log('event_data', data);
-
         this.device_auth(loggedIn);
 
       }, error => {
@@ -80,13 +93,13 @@ export class DevicesPage implements OnInit {
       });
   }
 
-  connect(device: Device) {
-    const loggedIn = new LoggedIn(this.currentUser.account, device.ip, null);
+  connect(ip: string) {
+    const loggedIn = new LoggedIn(this.currentUser.account, ip, 'OOO');
     this.device_trigger(loggedIn);
-    this.router.navigate(['/device'], { queryParams: { name: `${device.name}`, ip: `${device.ip}`, status: `${device.status}` } });
+    this.router.navigate(['/device']);
   }
 
-  /*remove(device: Device) {
+  remove(device: Device) {
     this.deviceService.remove_device(device)
       .pipe(first())
       .subscribe(data => {
@@ -94,10 +107,6 @@ export class DevicesPage implements OnInit {
       }, error => {
         console.log('event_error', error);
       });
-  }*/
-
-  add_device() {
-    this.router.navigate(['/add-device']);
   }
 
   get isAdmin() {

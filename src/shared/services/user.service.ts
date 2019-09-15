@@ -6,24 +6,24 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class UserService {
+  token: string;
+  constructor(private http: HttpClient) {
+    this.token = localStorage.getItem('currentUser');
+  }
 
-  constructor(private http: HttpClient) { }
-
-  add_user(username: string, password: string) {
-    const token = localStorage.getItem('currentUser');
-    return this.http.post<any>(`${environment.api}/Users/add_user`, { username, password }, {
+  add_user(username: string, password: string, role: string) {
+    return this.http.post<any>(`${environment.api}/Users/add_user`, { username, password, role }, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
+        Authorization: 'Bearer ' + this.token,
         'Content-Type': 'application/json'
       })
     });
   }
 
   get_users() {
-    const token = localStorage.getItem('currentUser');
     return this.http.get<any>(`${environment.api}/Users/get_users`, {
       headers: new HttpHeaders({
-        Authorization: 'Bearer ' + token,
+        Authorization: 'Bearer ' + this.token,
         'Content-Type': 'application/json'
       })});
   }

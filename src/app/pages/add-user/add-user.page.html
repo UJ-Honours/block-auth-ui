@@ -23,6 +23,24 @@
             <ion-item>
               <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
             </ion-item>
+            <div padding>
+              <p>Choose Role:</p>
+              <div class="row">
+                <div class="custom-control custom-radio">
+                  <input type="radio" name="role" value="owner" ngModel> 
+                  <label class="custom-control-label" for="defaultUnchecked">Owner</label>
+                </div>
+              </div>
+              <div class="row">
+                <!-- Default checked -->
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="form-control-input" name="role" value="guest"
+                    checked ngModel>
+                  <label class="form-control-label" for="defaultChecked">Guest</label>
+                </div>
+              </div>
+            </div>
+            
           </div>
           <div padding>
             <ion-button size="large" type="submit" [disabled]="form.invalid" expand="block">Add User</ion-button>

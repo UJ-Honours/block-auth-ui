@@ -17,4 +17,29 @@
       <ion-button color="primary" (click)="logout()">Logout</ion-button>
     </div>
   </div>
+  <div class="row">
+    <div>
+      <h1>System Roles</h1>
+      <div>
+        <table>
+          <tr>
+            <td>
+              <p>Owner</p>
+            </td>
+            <td>
+              <ion-button (click)="goToOwnerRole()">Edit Permissions</ion-button>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Guest</p>
+            </td>
+            <td>
+              <ion-button (click)="goToGuestRole()">Edit Permissions</ion-button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </ion-content>
