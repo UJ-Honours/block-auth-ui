@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Device
+      User Roles
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,68 +14,23 @@
   </div>
   <!-- Grid row -->
   <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-lg-3 col-md-6 mb-4">
-
-      <!-- Card -->
-      <div class="card card-ecommerce">
-
-        <!-- Card image -->
-        <div class="view overlay">
-
-          <!--<img src="assets/img/lights.jpg" class="img-fluid" alt="" height="170" width="170">
-        -->
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-
+    <div padding>
+      <form #f="ngForm">
+        <table>
+          <tr *ngFor="let p of permissions;">
+            <td>
+              <p>{{p.title}}</p>
+            </td>
+            <td>
+              <input type="checkbox" [ngModelOptions]="{standalone: true}" [(ngModel)]="p.selected" />
+            </td>
+          </tr>
+        </table>
+        <div>
         </div>
-        <!-- Card image -->
-        <!-- Card content -->
-        <div class="card-body">
-
-          <!-- Category & Title -->
-          <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Name: {{device.name}}</a></strong></h5>
-          <!----<h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">Account: {{d.account}}</a>
-            </strong>
-          </h5>-->
-          <h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">Status: {{device.status}}</a>
-            </strong>
-          </h5>
-          <h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">IP Address: {{device.ip}}</a>
-            </strong>
-          </h5>
-          <span class="badge badge-danger mb-2"></span>
-
-          <!-- Card footer -->
-          <div class="card-footer pb-0">
-            <div class="form-group">
-
-              <div class="row">
-                <ion-button (click)="on(device)" color="success">Turn On</ion-button>
-              
-                <ion-button (click)="off(device)" color="danger">Turn Off</ion-button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card content -->
-
-      </div>
-      <!-- Card -->
-
+        <ion-button (click)="getSelectedPermissions()">Update Permissions</ion-button>
+      </form>
     </div>
-    <!-- Grid column -->
-
-
   </div>
   <!-- Grid row -->
 </ion-content>

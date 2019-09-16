@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  login(form) {
+  login(form: { value: { username: any; password: any; }; }) {
     this.submitted = true;
 
     // stop here if form is invalid

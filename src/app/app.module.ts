@@ -8,11 +8,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DeviceService } from '../shared/services/device.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { UserService } from 'src/shared/services/user.service';
-import { AuthenticationService } from 'src/shared/services/authentication.service';
 import { ErrorInterceptor } from 'src/shared/helpers/error.interceptor';
 import { JwtInterceptor } from 'src/shared/helpers/jwt.interceptor';
 

@@ -15,7 +15,8 @@ const routes: Routes = [
   {
     path: 'role',
     loadChildren: () => import('./pages/role/role.module').then(m => m.RolePageModule),
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
   },
   {
     path: 'devices',

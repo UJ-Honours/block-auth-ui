@@ -6,7 +6,7 @@ import { LoggedIn } from '../../../shared/models/loggedin.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/shared/models/user.model';
 import { AuthenticationService } from 'src/shared/services/authentication.service';
-import { Role } from 'src/shared/models/role';
+import { Role } from '../../../shared/models/role';
 
 @Component({
   selector: 'app-device',
@@ -21,7 +21,7 @@ export class DevicePage implements OnInit {
   constructor(private deviceService: DeviceService, private router: Router,
               private route: ActivatedRoute, private authService: AuthenticationService
   ) {
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.authService.currentUser.subscribe((x: User) => this.currentUser = x);
   }
 
   ngOnInit() {
@@ -30,6 +30,7 @@ export class DevicePage implements OnInit {
         console.log(params);
         this.device = new Device(params.name, params.ip, params.status);
       });
+    console.log(this.currentUser.role);
   }
 
   on(device: Device) {
@@ -43,17 +44,24 @@ export class DevicePage implements OnInit {
   }
 
   off(device: Device) {
-    this.deviceService.device_off(device)
-      .pipe(first())
-      .subscribe(data => {
-        console.log(data);
-      }, error => {
-        console.log('event_error', error);
-      });
+    console.log('turning off');
+    const cu = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(cu.role);
+    if (cu.role === Role.Admin) {
+      this.deviceService.device_off(device)
+        .pipe(first())
+        .subscribe(data => {
+          console.log(data);
+        }, error => {
+          console.log('event_error', error);
+        });
+    } else {
+      console.log('Access Denied');
+    }
   }
 
   goBack() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/devices']);
   }
 
   device_trigger(loggedIn: LoggedIn) {
@@ -99,7 +107,7 @@ export class DevicePage implements OnInit {
     this.router.navigate(['/device']);
   }
 
-  remove(device: Device) {
+  /*remove(device: Device) {
     this.deviceService.remove_device(device)
       .pipe(first())
       .subscribe(data => {
@@ -107,7 +115,7 @@ export class DevicePage implements OnInit {
       }, error => {
         console.log('event_error', error);
       });
-  }
+  }*/
 
   get isAdmin() {
     return this.currentUser && this.currentUser.role === Role.Admin;

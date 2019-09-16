@@ -13,7 +13,7 @@ export class HomePage {
   currentUser: User;
 
   constructor(private router: Router, private authService: AuthenticationService) {
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.authService.currentUser.subscribe((x: any) => this.currentUser = x);
   }
 
   goToUsers() {
@@ -30,7 +30,7 @@ export class HomePage {
     this.router.navigate(['/role'], { queryParams: { group: 'owner' }});
   }
   goToGuestRole() {
-    this.router.navigate(['/role'], { queryParams: { group: 'owner' } });
+    this.router.navigate(['/role'], { queryParams: { group: 'guest' } });
   }
   get isAdmin() {
     return this.currentUser && this.currentUser.role === Role.Admin;
