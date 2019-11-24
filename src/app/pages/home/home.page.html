@@ -7,39 +7,48 @@
 </ion-header>
 
 <ion-content>
-  <div class="row">
-    <h1 class="center" >IoT Management System</h1>
-  </div>
-  <div class="row">
-    <div class="form-group">
-      <ion-button color="primary" (click)="goToUsers()" *ngIf="isAdmin">Users</ion-button>
-      <ion-button color="primary" (click)="goToDevices()">Devices</ion-button>
-      <ion-button color="primary" (click)="logout()">Logout</ion-button>
+  <div class="container">
+    <div class="row">
+      <h1 class="text-center">IoT Management System</h1>
     </div>
-  </div>
-  <div class="row" *ngIf="isAdmin">
-    <div>
-      <h1>System Roles</h1>
-      <div>
-        <table>
-          <tr>
-            <td>
-              <p>Owner</p>
-            </td>
-            <td>
-              <ion-button (click)="goToOwnerRole()">Edit Owner Permissions</ion-button>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Guest</p>
-            </td>
-            <td>
-              <ion-button (click)="goToGuestRole()">Edit Guest Permissions</ion-button>
-            </td>
-          </tr>
-        </table>
+    <div class="row">
+      <div class="form-group">
+        <ion-button color="primary" (click)="goToUsers()" *ngIf="isAdmin">Users</ion-button>
+        <ion-button color="primary" (click)="goToDevices()">Devices</ion-button>
+        <ion-button color="primary" (click)="goToLogs()" *ngIf="isAdmin">Logs</ion-button>
       </div>
     </div>
+    <div class="row" *ngIf="isAdmin">
+      <div>
+        <h1>System Roles</h1>
+        <div>
+          <table>
+            <tr>
+              <td>
+                <p>Owner</p>
+              </td>
+              <td>
+                <ion-button (click)="goToOwnerRole()">Edit Owner Permissions</ion-button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Guest</p>
+              </td>
+              <td>
+                <ion-button (click)="goToGuestRole()">Edit Guest Permissions</ion-button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="logout()" >
+        <ion-icon name="log-out"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </div>
 </ion-content>

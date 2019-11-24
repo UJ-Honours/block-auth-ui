@@ -1,25 +1,36 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Users
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
+  <div>
+    <div>
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="goToAddUser()" *ngIf="isAdmin">
+          <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </div>
+  </div>
+
 <ion-content>
-  <div class="row">
+  <!--<div class="row">
     <div class="form-group">
     <ion-button color="primary" (click)="goBack()">Back</ion-button>
       <ion-button color="primary" (click)="goToAddUser()" *ngIf="isAdmin">Add User</ion-button>
     </div>
-    
-  </div>
-  <!-- Grid row -->
-  <ion-list *ngFor="let u of users">
-    <ion-item>
-      <ion-label>{{u.username}}</ion-label>
-      <ion-label>{{u.account}}</ion-label>
-    </ion-item>
-  </ion-list>
-  <!-- Grid row -->
+  </div>-->
+  
+ <div class="card" *ngFor="let u of users">
+   <img src="../../../assets/img/img_avatar2.png" alt="John" style="width:100%">
+   <h1>{{u.username}}</h1>
+   <p class="title">{{u.account}}</p>
+ </div>
+  
 </ion-content>

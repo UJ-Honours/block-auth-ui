@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       User Roles
     </ion-title>
@@ -7,16 +10,14 @@
 </ion-header>
 
 <ion-content>
-  <div class="row">
-    <div class="form-group">
-      <ion-button color="primary" (click)="goBack()">Back</ion-button>
-    </div>
-  </div>
   <!-- Grid row -->
   <div class="row">
     <div padding>
       <form #f="ngForm">
-        <table>
+        <div class="imgcontainer">
+          <img src="../../../assets/img/rbac.png" alt="Avatar" class="avatar">
+        </div>
+        <table class="table table-striped">
           <tr *ngFor="let p of permissions;">
             <td>
               <p>{{p.title}}</p>
@@ -28,7 +29,11 @@
         </table>
         <div>
         </div>
-        <ion-button (click)="getSelectedPermissions()">Update Permissions</ion-button>
+        <ion-button (click)="updateGuestPermissions()" *ngIf="isGuest" expand="block" size="large">Update Guest
+          Permissions
+        </ion-button>
+        <ion-button (click)="updateOwnerPermissions()" *ngIf="isOwner" expand="block" size="large">Update Owner Permissions
+        </ion-button>
       </form>
     </div>
   </div>

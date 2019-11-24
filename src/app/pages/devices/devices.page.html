@@ -1,84 +1,43 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home" *ngIf="isAdmin"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Devices
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="add_device()" *ngIf="isAdmin">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</div>
+<div>
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="logout()" *ngIf="!isAdmin">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</div>
 <ion-content>
-  <div class="row">
-    <div class="form-group">
-      <ion-button color="primary" (click)="goBack()">Back</ion-button>
-      <ion-button color="primary" (click)="add_device()" *ngIf="isAdmin">Add Device</ion-button>
-    </div>
+  <div class="alert alert-info" role="alert" *ngIf="size===0">
+    No devices Registered
   </div>
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-lg-3 col-md-6 mb-4" *ngFor="let d of devices">
-
-      <!-- Card -->
-      <div class="card card-ecommerce">
-
-        <!-- Card image -->
-        <div class="view overlay">
-
-          <!--<img src="assets/img/lights.jpg" class="img-fluid" alt="" height="170" width="170">
-        -->
-          <a>
-
-            <div class="mask rgba-white-slight"></div>
-
-          </a>
-
-        </div>
-        <!-- Card image -->
-        <!-- Card content -->
+  <div class="row" *ngFor="let d of devices">
+    <div class="col-sm-6">
+      <div class="card">
         <div class="card-body">
-
-          <!-- Category & Title -->
-          <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Name: {{d.name}}</a></strong></h5>
-          <!----<h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">Account: {{d.account}}</a>
-            </strong>
-          </h5>-->
-          <h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">Status: {{d.status}}</a>
-            </strong>
-          </h5>
-          <h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">IP Address: {{d.ip}}</a>
-            </strong>
-          </h5>
-          <span class="badge badge-danger mb-2"></span>
-
-          <!-- Card footer -->
-          <div class="card-footer pb-0">
-            <div class="form-group">
-
-              <div class="row">
-                <ion-button (click)="connect(d)" color="success">Connect</ion-button>
-              
-                <ion-button (click)="remove(d.ip)" color="danger">Remove</ion-button>
-              </div>
-            </div>
-          </div>
+          <h2 class="card-title">Device Name: <b>{{d.name}}</b></h2>
+          <h4 class="card-title">Device IP: <b>{{d.ip}}</b></h4>
+          <h4 class="card-title">Device Status: <b>{{d.status}}</b></h4>
+          <h4 class="card-title">Users Allowed: <b>{{d.role}}</b></h4>
+          <ion-button (click)="connect(d)" size="large" expand="block" color="success">Connect
+          </ion-button>
         </div>
-
-        <!-- Card content -->
-
       </div>
-      <!-- Card -->
-
     </div>
-    <!-- Grid column -->
-
-
   </div>
-  <!-- Grid row -->
 </ion-content>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/shared/services/authentication.service';
-import { User } from 'src/shared/models/user.model';
-import { Role } from 'src/shared/models/role';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { User } from '../../../shared/models/user.model';
+import { Role } from '../../../shared/models/role';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +18,9 @@ export class HomePage {
 
   goToUsers() {
     this.router.navigate(['/users']);
+  }
+  goToLogs() {
+    this.router.navigate(['/logs']);
   }
   goToDevices() {
     this.router.navigate(['/devices']);

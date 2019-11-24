@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="devices"></ion-back-button>
+    </ion-buttons>
     <ion-title>
       Device
     </ion-title>
@@ -8,74 +11,18 @@
 
 <ion-content>
   <div class="row">
-    <div class="form-group">
-      <ion-button color="primary" (click)="goBack()">Back</ion-button>
-    </div>
-  </div>
-  <!-- Grid row -->
-  <div class="row">
-
-    <!-- Grid column -->
-    <div class="col-lg-3 col-md-6 mb-4">
-
-      <!-- Card -->
-      <div class="card card-ecommerce">
-
-        <!-- Card image -->
-        <div class="view overlay">
-
-          <!--<img src="assets/img/lights.jpg" class="img-fluid" alt="" height="170" width="170">
-        -->
-          <a>
-            <div class="mask rgba-white-slight"></div>
-          </a>
-
-        </div>
-        <!-- Card image -->
-        <!-- Card content -->
+    <div class="col-sm-6">
+      <div class="card">
         <div class="card-body">
-
-          <!-- Category & Title -->
-          <h5 class="card-title mb-1"><strong><a href="" class="dark-grey-text">Name: {{device.name}}</a></strong></h5>
-          <!----<h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">Account: {{d.account}}</a>
-            </strong>
-          </h5>-->
-          <h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">Status: {{device.status}}</a>
-            </strong>
-          </h5>
-          <h5 class="card-title mb-1">
-            <strong>
-              <a href="" class="dark-grey-text">IP Address: {{device.ip}}</a>
-            </strong>
-          </h5>
-          <span class="badge badge-danger mb-2"></span>
-
-          <!-- Card footer -->
-          <div class="card-footer pb-0">
-            <div class="form-group">
-
-              <div class="row">
-                <ion-button (click)="on(device)" color="success">Turn On</ion-button>
-              
-                <ion-button (click)="off(device)" color="danger">Turn Off</ion-button>
-              </div>
-            </div>
+          <h2 class="card-title">Device Name: {{device.name}}</h2>
+          <h4 class="card-title">Device IP: {{device.ip}}</h4>
+          <h4 class="card-title">Device Status: {{device.status}}</h4>
+          <div class="row">
+            <ion-button (click)="on(device)" id="turnOn" color="success">Turn On</ion-button>
+            <ion-button (click)="off(device)" id="turnOff" color="danger">Turn Off</ion-button>
           </div>
         </div>
-
-        <!-- Card content -->
-
       </div>
-      <!-- Card -->
-
     </div>
-    <!-- Grid column -->
-
-
   </div>
-  <!-- Grid row -->
 </ion-content>

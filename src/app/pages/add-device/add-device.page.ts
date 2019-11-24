@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DeviceService } from 'src/shared/services/device.service';
+import { DeviceService } from '../../../shared/services/device.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { Device } from 'src/shared/models/device.model';
+import { Device } from '../../../shared/models/device.model';
 
 @Component({
   selector: 'app-addDevice',
@@ -22,7 +22,8 @@ export class AddDevicePage implements OnInit {
   ngOnInit() {
     this.deviceform = this.formBuilder.group({
       devicename: ['deviceName', Validators.required],
-      ip: ['ip', Validators.required]
+      ip: ['ip', Validators.required],
+      role: ['role', Validators.required]
     });
   }
 
@@ -30,7 +31,7 @@ export class AddDevicePage implements OnInit {
     this.router.navigate(['/devices']);
   }
 
-  add_device(form) {
+  add_device(form: { value: { deviceName: any; ip: any; role: any; }; }) {
     this.submitted = true;
 
     // stop here if form is invalid
@@ -39,8 +40,9 @@ export class AddDevicePage implements OnInit {
     }
     const devicename = form.value.deviceName;
     const ip = form.value.ip;
+    const role = form.value.role;
 
-    const device = new Device(devicename, ip, null);
+    const device = new Device(devicename, ip, 'offline', role);
 
     console.log('device', device);
 

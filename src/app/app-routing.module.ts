@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/shared/helpers/auth.gaurd';
-import { Role } from 'src/shared/models/role';
+import { AuthGuard } from '../shared/helpers/auth.gaurd';
+import { Role } from '../shared/models/role';
 
 const routes: Routes = [
   {
@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
     canActivate: [AuthGuard]
+  }, {
+    path: 'logs',
+    loadChildren: () => import('./pages/logs/logs.module').then(m => m.LogsPageModule),
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
   },
   {
     path: 'role',
@@ -50,6 +55,7 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   }
+
 ];
 
 @NgModule({

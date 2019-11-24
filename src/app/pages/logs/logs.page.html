@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Logs
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="alert alert-info" role="alert" *ngIf="size===0">
+    No devices Registered
+  </div>
+  <div class="row" *ngFor="let d of logs">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Log ID: <b>{{d.logID}}</b></h2>
+          <h4 class="card-title">Action: <b>{{d.action}}</b></h4>
+          <h4 class="card-title">Account: <b>{{d.account}}</b></h4>
+          <h4 class="card-title">Role: <b>{{d.role}}</b></h4>
+          <!--<h4 class="card-title">Log Time: <b>{{d.logTime}}</b></h4>-->
+          <ion-button size="large" expand="block" color="success">View Log</ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

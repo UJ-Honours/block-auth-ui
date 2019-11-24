@@ -4,9 +4,10 @@ import { Device } from '../../../shared/models/device.model';
 import { DeviceService } from '../../../shared/services/device.service';
 import { LoggedIn } from '../../../shared/models/loggedin.model';
 import { Router } from '@angular/router';
-import { User } from 'src/shared/models/user.model';
-import { AuthenticationService } from 'src/shared/services/authentication.service';
-import { Role } from 'src/shared/models/role';
+import { User } from '../../../shared/models/user.model';
+import { AuthenticationService } from '../../../shared/services/authentication.service';
+import { Role } from '../../../shared/models/role';
+import { List } from '../../../shared/models/list.model';
 
 @Component({
   selector: 'app-devices',
@@ -15,24 +16,38 @@ import { Role } from 'src/shared/models/role';
 })
 export class DevicesPage implements OnInit {
 
-  ipAddress = '';
   devices: Device[];
   currentUser: User;
-
-  constructor(private deviceService: DeviceService, private router: Router, private authService: AuthenticationService
+  size: number;
+  constructor(private deviceService: DeviceService,
+              private router: Router,
+              private authService: AuthenticationService
   ) {
     this.authService.currentUser.subscribe(x => this.currentUser = x);
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {
+    const dList = new List<Device>();
     this.deviceService.get_devices()
       .subscribe(data => {
-        console.log('data', data);
-        this.devices = data.devices;
+        const d = data.devices;
+        const role = this.currentUser.role;
         // tslint:disable-next-line: only-arrow-functions
-        this.devices.forEach(function(value) {
-          value.status = 'online';
+        d.forEach(function(value: Device) {
+          if ((value.role === Role.Admin) && (role !== Role.Admin)) {
+            value = null;
+          } else {
+            dList.add(value);
+          }
         });
+        this.devices = dList.items;
+        this.size = this.devices.length;
       }, error => {
         console.log('error', error);
       });
@@ -81,9 +96,16 @@ export class DevicesPage implements OnInit {
   }
 
   connect(device: Device) {
-    const loggedIn = new LoggedIn(this.currentUser.account, device.ip, null);
+    const loggedIn = new LoggedIn(this.currentUser.account, device.ip, null, this.currentUser.role);
     this.device_trigger(loggedIn);
-    this.router.navigate(['/device'], { queryParams: { name: `${device.name}`, ip: `${device.ip}`, status: `${device.status}` } });
+    this.router.navigate(['/device'], {
+      queryParams: {
+        name: `${device.name}`,
+        ip: `${device.ip}`,
+        status: `${device.status}`,
+        role: `${this.currentUser.role}`
+      }
+    });
   }
 
   /*remove(device: Device) {

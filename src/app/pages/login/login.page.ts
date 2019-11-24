@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../../../shared/services/authentication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Role } from 'src/shared/models/role';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,11 @@ export class LoginPage implements OnInit {
               private authService: AuthenticationService) {
     // redirect to home if already logged in
     if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+      if (this.authService.currentUserValue.role === Role.Admin) {
+        this.router.navigate(['/']);
+      } else {
+        this.router.navigate(['/devices']);
+      }
     }
   }
 
@@ -48,6 +53,12 @@ export class LoginPage implements OnInit {
       .subscribe(
         data => {
           this.router.navigate(['/home']);
+          console.log(data);
+          if (data.role === Role.Admin) {
+            this.router.navigate(['/']);
+          } else {
+            this.router.navigate(['/devices']);
+          }
         },
         error => {
           this.error = error;

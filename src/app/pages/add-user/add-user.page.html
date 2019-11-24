@@ -1,42 +1,43 @@
-<ion-header translucent>
+<ion-header>
   <ion-toolbar>
-    <ion-title>Add New User</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="users"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Add New User
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
   <div class="row">
-    
-    <div class="form-group">
-      <ion-button color="primary" (click)="goBack()">Back</ion-button>
-    </div>
   </div>
   <form #form="ngForm" (ngSubmit)="addUser(form)">
+    <div class="container">
+      <img src="../../../assets/img/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
     <ion-grid>
       <ion-row justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
           
           <div padding>
             <ion-item>
-              <ion-input name="username" type="text" placeholder="username" ngModel required></ion-input>
+              <ion-input name="username" type="text" placeholder="username" class="form-control" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+              <ion-input name="password" type="password" placeholder="Password" class="form-control" ngModel required>
+              </ion-input>
             </ion-item>
             <div padding>
-              <p>Choose Role:</p>
-              <div class="row">
-                <div class="custom-control custom-radio">
-                  <input type="radio" name="role" value="owner" ngModel> 
-                  <label class="custom-control-label" for="defaultUnchecked">Owner</label>
-                </div>
-              </div>
-              <div class="row">
-                <!-- Default checked -->
-                <div class="custom-control custom-radio">
-                  <input type="radio" class="form-control-input" name="role" value="guest"
-                    checked ngModel>
-                  <label class="form-control-label" for="defaultChecked">Guest</label>
+              <p>Select Row:</p>
+              <div class="">
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="role" value="owner" ngModel> Owner
+                  </label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" class="form-control-input" name="role" value="guest" checked ngModel> Guest
+                  </label>
                 </div>
               </div>
             </div>
